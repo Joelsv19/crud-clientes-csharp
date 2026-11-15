@@ -1,0 +1,14 @@
+@model Cliente
+@{
+    ViewData["Title"] = "Eliminar cliente";
+}
+<div class="page-heading"><h1>Eliminar cliente</h1></div>
+<div class="notice warning" role="alert">¿Deseas eliminar este cliente? La eliminación es permanente.</div>
+<section class="card form-card">
+    <partial name="_DatosCliente" model="Model" />
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post" asp-antiforgery="true" class="form-actions">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="button danger">Confirmar eliminación</button>
+        <a asp-action="Index" class="button secondary">Cancelar</a>
+    </form>
+</section>

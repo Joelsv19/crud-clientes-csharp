@@ -1,0 +1,15 @@
+@model Cliente
+@{
+    ViewData["Title"] = "Editar cliente";
+}
+<div class="page-heading"><h1>Editar cliente</h1></div>
+<section class="card form-card">
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post" asp-antiforgery="true">
+        <input type="hidden" asp-for="Id" />
+        <partial name="_Formulario" model="Model" />
+    </form>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/clientes.js" asp-append-version="true"></script>
+}

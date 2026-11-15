@@ -1,0 +1,14 @@
+@model Cliente
+@{
+    ViewData["Title"] = "Registrar cliente";
+}
+<div class="page-heading"><h1>Registrar cliente</h1></div>
+<section class="card form-card">
+    <form asp-action="Create" method="post" asp-antiforgery="true">
+        <partial name="_Formulario" model="Model" />
+    </form>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/clientes.js" asp-append-version="true"></script>
+}

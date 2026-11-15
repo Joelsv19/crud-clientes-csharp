@@ -1,0 +1,14 @@
+@model Cliente
+<dl class="details-grid">
+    <div><dt>ID</dt><dd>@Model.Id</dd></div>
+    <div><dt>@Html.DisplayNameFor(m => m.Cedula)</dt><dd>@Model.Cedula</dd></div>
+    <div><dt>@Html.DisplayNameFor(m => m.Nombres)</dt><dd>@Model.Nombres</dd></div>
+    <div><dt>@Html.DisplayNameFor(m => m.Apellidos)</dt><dd>@Model.Apellidos</dd></div>
+    <div><dt>@Html.DisplayNameFor(m => m.Correo)</dt><dd>@Model.Correo</dd></div>
+    <div><dt>@Html.DisplayNameFor(m => m.Telefono)</dt><dd>@Model.Telefono</dd></div>
+    <div><dt>@Html.DisplayNameFor(m => m.Direccion)</dt><dd>@Model.Direccion</dd></div>
+    <div><dt>@Html.DisplayNameFor(m => m.FechaNacimiento)</dt><dd>@Model.FechaNacimiento?.ToString("dd/MM/yyyy")</dd></div>
+    <div><dt>@Html.DisplayNameFor(m => m.Ocupacion)</dt><dd>@Model.Ocupacion</dd></div>
+    <div><dt>Provincia</dt><dd>@Model.Provincia?.Nombre</dd></div>
+    <div><dt>Cantón</dt><dd>@Model.Canton?.Nombre</dd></div>
+</dl>

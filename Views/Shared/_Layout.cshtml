@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gestión de clientes</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" asp-controller="Clientes" asp-action="Index">Gestión de clientes</a>
+            <nav aria-label="Navegación principal"><a asp-controller="Clientes" asp-action="Index">Clientes</a><a asp-controller="Clientes" asp-action="Create">Registrar</a></nav>
+        </div>
+    </header>
+    <main id="contenido" class="container">@RenderBody()</main>
+    <footer class="container site-footer">UNIANDES · Aplicaciones Web · Semana 3 — Tarea 1</footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,48 @@
+@model IEnumerable<Cliente>
+@{
+    ViewData["Title"] = "Clientes registrados";
+}
+<div class="page-heading">
+    <div>
+        <h1>Gestión de clientes</h1>
+    </div>
+    <a asp-action="Create" class="button">Registrar cliente</a>
+</div>
+@if (TempData["Mensaje"] is string mensaje)
+{
+    <div class="notice" role="status">@mensaje</div>
+}
+<section class="card" aria-label="Listado de clientes">
+    @if (!Model.Any())
+    {
+        <div class="empty-state">
+            <h2>Aún no hay clientes registrados</h2>
+            <a asp-action="Create" class="button">Registrar cliente</a>
+        </div>
+    }
+    else
+    {
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de clientes con desplazamiento horizontal">
+            <table>
+                <caption>Clientes registrados</caption>
+                <thead><tr><th scope="col">ID</th><th scope="col">Nombres</th><th scope="col">Apellidos</th><th scope="col">Cédula</th><th scope="col">Correo electrónico</th><th scope="col">Teléfono</th><th scope="col">Provincia / Cantón</th><th scope="col">Acciones</th></tr></thead>
+                <tbody>
+                @foreach (var cliente in Model)
+                {
+                    <tr>
+                        <td>@cliente.Id</td><td>@cliente.Nombres</td><td>@cliente.Apellidos</td>
+                        <td>@cliente.Cedula</td><td>@cliente.Correo</td><td>@cliente.Telefono</td>
+                        <td>@cliente.Provincia?.Nombre<br /><span class="muted">@cliente.Canton?.Nombre</span></td>
+                        <td><div class="row-actions">
+                            <a asp-action="Details" asp-route-id="@cliente.Id" class="button secondary">Ver detalles</a>
+                            <a asp-action="Edit" asp-route-id="@cliente.Id" class="button secondary">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@cliente.Id" class="button danger">Eliminar</a>
+                        </div></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>
+<p class="footnote">Las provincias y los cantones disponibles son una muestra de Ecuador para demostración.</p>

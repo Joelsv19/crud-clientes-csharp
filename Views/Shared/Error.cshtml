@@ -1,0 +1,6 @@
+@model ErrorViewModel
+@{ ViewData["Title"] = "Error"; }
+<h1>No se pudo completar la solicitud</h1>
+<p>Comprueba que MariaDB esté iniciado y que la conexión esté configurada.</p>
+@if (Model.ShowRequestId) { <p>Solicitud: <code>@Model.RequestId</code></p> }
+<a asp-controller="Clientes" asp-action="Index" class="button">Volver al listado</a>

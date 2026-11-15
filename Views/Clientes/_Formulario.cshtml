@@ -1,0 +1,65 @@
+@model Cliente
+<div asp-validation-summary="All" class="validation-summary" role="alert"></div>
+<p class="muted">Todos los campos son obligatorios.</p>
+<div class="form-grid">
+    <div class="field">
+        <label asp-for="Nombres"></label>
+        <input asp-for="Nombres" maxlength="80" autocomplete="given-name" required />
+        <span asp-validation-for="Nombres" class="field-error"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Apellidos"></label>
+        <input asp-for="Apellidos" maxlength="80" autocomplete="family-name" required />
+        <span asp-validation-for="Apellidos" class="field-error"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Cedula"></label>
+        <input asp-for="Cedula" maxlength="10" inputmode="numeric" pattern="[0-9]{10}" required />
+        <span asp-validation-for="Cedula" class="field-error"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Correo"></label>
+        <input asp-for="Correo" type="email" maxlength="120" autocomplete="email" required />
+        <span asp-validation-for="Correo" class="field-error"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Telefono"></label>
+        <input asp-for="Telefono" type="tel" maxlength="20" autocomplete="tel" required />
+        <span asp-validation-for="Telefono" class="field-error"></span>
+    </div>
+    <div class="field">
+        <label asp-for="FechaNacimiento"></label>
+        <input asp-for="FechaNacimiento" type="date" asp-format="{0:yyyy-MM-dd}" max="@DateTime.Today.ToString("yyyy-MM-dd")" required />
+        <span asp-validation-for="FechaNacimiento" class="field-error"></span>
+    </div>
+    <div class="field full-width">
+        <label asp-for="Direccion"></label>
+        <input asp-for="Direccion" maxlength="200" autocomplete="street-address" required />
+        <span asp-validation-for="Direccion" class="field-error"></span>
+    </div>
+    <div class="field full-width">
+        <label asp-for="Ocupacion"></label>
+        <input asp-for="Ocupacion" maxlength="80" required />
+        <span asp-validation-for="Ocupacion" class="field-error"></span>
+    </div>
+    <div class="field">
+        <label asp-for="ProvinciaId"></label>
+        <select asp-for="ProvinciaId" asp-items="ViewBag.Provincias" data-val-required="Seleccione una provincia." data-cantones-url="@Url.Action("GetCantones", "Clientes")" required>
+            <option value="">Seleccione una provincia</option>
+        </select>
+        <span asp-validation-for="ProvinciaId" class="field-error"></span>
+    </div>
+    <div class="field">
+        <label asp-for="CantonId"></label>
+        <select asp-for="CantonId" asp-items="ViewBag.Cantones" data-val-required="Seleccione un cantón." disabled="@(Model.ProvinciaId <= 0)" required>
+            <option value="">Seleccione un cantón</option>
+        </select>
+        <span asp-validation-for="CantonId" class="field-error"></span>
+    </div>
+</div>
+<p id="estado-cantones" class="muted" role="status" aria-live="polite">Provincias y cantones de demostración; no es el catálogo completo de Ecuador.</p>
+<noscript><p class="field-error">Activa JavaScript para cargar los cantones al cambiar de provincia.</p></noscript>
+<div class="form-actions">
+    <button type="submit" class="button">Guardar</button>
+    <a asp-action="Index" class="button secondary">Cancelar</a>
+</div>

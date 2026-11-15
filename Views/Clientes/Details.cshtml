@@ -1,0 +1,12 @@
+@model Cliente
+@{
+    ViewData["Title"] = "Detalles del cliente";
+}
+<div class="page-heading"><h1>Detalles del cliente</h1></div>
+<section class="card form-card">
+    <partial name="_DatosCliente" model="Model" />
+    <div class="form-actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="button">Editar</a>
+        <a asp-action="Index" class="button secondary">Volver al listado</a>
+    </div>
+</section>
